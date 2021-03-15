@@ -1,8 +1,8 @@
 <?php
     // parameters for php data object
-    $dsn = 'mysql:host=localhost;dbname=zippyusedautos';
-    $user = 'root';
-    $password = '';
+    $dsn = 'mysql://f2qt8i85psvmhrmg:lqzwcg9s6c7r2zbk@pxukqohrckdfo4ty.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/iasqxmesm0vc2u5a';
+    $user = 'f2qt8i85psvmhrmg';
+    $password = 'lqzwcg9s6c7r2zbk';
     $option = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION); // sets error mode for PDO
 
     // initialize the PDO
