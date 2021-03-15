@@ -1,0 +1,273 @@
+* {
+  box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  margin: 0px; }
+
+body {
+  min-height: 100vh;
+  background-color: #fdf7ff; }
+
+.theme1 .public_header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  color: #1817e3;
+  border-bottom: solid;
+  width: 100%;
+  height: 10%; }
+  @media screen and (max-width: 767.9px) {
+    .theme1 .public_header {
+      font-size: 0.5rem; } }
+  @media screen and (min-width: 768px) and (max-width: 991.9px) {
+    .theme1 .public_header {
+      font-size: 1rem; } }
+  @media screen and (min-width: 992px) and (max-width: 1199.9px) {
+    .theme1 .public_header {
+      width: 90%;
+      font-size: 1.5rem;
+      margin: auto; } }
+  @media screen and (min-width: 1200px) {
+    .theme1 .public_header {
+      width: 80%;
+      font-size: 2rem;
+      margin: auto; } }
+.theme1 .admin_header {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  border-bottom: solid #1817e3;
+  width: 100%;
+  height: 10%; }
+  .theme1 .admin_header h1 {
+    color: #1817e3; }
+  .theme1 .admin_header nav {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    color: #1e1926; }
+    .theme1 .admin_header nav a {
+      text-decoration: none;
+      margin-right: 0.5rem; }
+    .theme1 .admin_header nav a:hover {
+      text-decoration: underline;
+      color: #ff0000; }
+    .theme1 .admin_header nav a:visited {
+      color: #1817e3; }
+  @media screen and (max-width: 767.9px) {
+    .theme1 .admin_header h1 {
+      font-size: 1rem; }
+    .theme1 .admin_header nav {
+      font-size: 0.8rem; } }
+  @media screen and (min-width: 768px) and (max-width: 991.9px) {
+    .theme1 .admin_header h1 {
+      font-size: 1rem; }
+    .theme1 .admin_header nav {
+      font-size: 1rem; } }
+  @media screen and (min-width: 992px) and (max-width: 1199.9px) {
+    .theme1 .admin_header {
+      width: 90%;
+      margin: auto; }
+      .theme1 .admin_header h1 {
+        font-size: 1.5rem; }
+      .theme1 .admin_header nav {
+        font-size: 1rem; } }
+  @media screen and (min-width: 1200px) {
+    .theme1 .admin_header {
+      width: 80%;
+      font-size: 2rem;
+      margin: auto; }
+      .theme1 .admin_header h1 {
+        font-size: 2rem; }
+      .theme1 .admin_header nav {
+        font-size: 1rem; } }
+.theme1 .global_filter form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1% 0px 1% 0px;
+  width: 100%; }
+  .theme1 .global_filter form #select_inputs {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+    margin-bottom: 0.5rem; }
+  .theme1 .global_filter form #filter_form_submit {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%; }
+    .theme1 .global_filter form #filter_form_submit div {
+      margin-bottom: 0.5rem; }
+@media screen and (min-width: 768px) and (max-width: 991.9px) {
+  .theme1 .global_filter form #select_inputs {
+    width: 40%; } }
+@media screen and (min-width: 992px) and (max-width: 1199.9px) {
+  .theme1 .global_filter form {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    width: 90%;
+    margin: 1% auto 1% auto; }
+    .theme1 .global_filter form #select_inputs {
+      justify-content: flex-start;
+      width: auto;
+      margin-right: 1rem; }
+      .theme1 .global_filter form #select_inputs select {
+        margin-right: 1%; }
+    .theme1 .global_filter form #filter_form_submit {
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: auto; }
+      .theme1 .global_filter form #filter_form_submit div {
+        margin-right: 1rem; } }
+@media screen and (min-width: 1200px) {
+  .theme1 .global_filter form {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    width: 80%;
+    margin: 1% auto 1% auto; }
+    .theme1 .global_filter form #select_inputs {
+      justify-content: flex-start;
+      width: auto;
+      margin-right: 1rem; }
+      .theme1 .global_filter form #select_inputs select {
+        margin-right: 1%; }
+    .theme1 .global_filter form #filter_form_submit {
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: auto; }
+      .theme1 .global_filter form #filter_form_submit div {
+        margin-right: 1rem; } }
+.theme1 #public_inventory {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0px;
+  grid-auto-rows: minmax(0.5rem, auto);
+  row-gap: 0px;
+  max-width: 100%; }
+  .theme1 #public_inventory h5 {
+    margin: 0px;
+    padding: 0px; }
+  .theme1 #public_inventory p {
+    margin: 0px;
+    padding: 0px 3px 0px 0px; }
+  .theme1 #public_inventory p:nth-child(12n+1) {
+    background-color: #afa8ba; }
+  .theme1 #public_inventory p:nth-child(12n+2) {
+    background-color: #afa8ba; }
+  .theme1 #public_inventory p:nth-child(12n+3) {
+    background-color: #afa8ba; }
+  .theme1 #public_inventory p:nth-child(12n+4) {
+    background-color: #afa8ba; }
+  .theme1 #public_inventory p:nth-child(12n+5) {
+    background-color: #afa8ba; }
+  .theme1 #public_inventory p:nth-child(12n+6) {
+    background-color: #afa8ba; }
+  @media screen and (min-width: 768px) and (max-width: 991.9px) {
+    .theme1 #public_inventory {
+      max-width: 80%;
+      margin: auto; } }
+  @media screen and (min-width: 992px) and (max-width: 1199.9px) {
+    .theme1 #public_inventory {
+      max-width: 70%;
+      margin: auto; } }
+  @media screen and (min-width: 1200px) {
+    .theme1 #public_inventory {
+      max-width: 65%;
+      margin: auto; } }
+.theme1 #admin_inventory {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0px;
+  grid-auto-rows: minmax(0.5rem, auto);
+  row-gap: 0px;
+  max-width: 100%; }
+  .theme1 #admin_inventory h5 {
+    margin: 0px;
+    padding: 0px; }
+  .theme1 #admin_inventory p {
+    margin: 0px;
+    padding: 0px 3px 0px 0px; }
+  @media screen and (min-width: 768px) and (max-width: 991.9px) {
+    .theme1 #admin_inventory {
+      max-width: 80%;
+      margin: auto; } }
+  @media screen and (min-width: 992px) and (max-width: 1199.9px) {
+    .theme1 #admin_inventory {
+      max-width: 70%;
+      margin: auto; } }
+  @media screen and (min-width: 1200px) {
+    .theme1 #admin_inventory {
+      max-width: 65%;
+      margin: auto; } }
+.theme1 #admin_add h2 {
+  color: #1e1926; }
+.theme1 #admin_add form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start; }
+  .theme1 #admin_add form select {
+    margin-bottom: 0.5rem;
+    width: 7rem; }
+  .theme1 #admin_add form input {
+    margin-bottom: 0.5rem; }
+  .theme1 #admin_add form button {
+    margin-top: 0.5rem; }
+@media screen and (min-width: 768px) and (max-width: 991.9px) {
+  .theme1 #admin_add form {
+    margin-right: 2rem; } }
+@media screen and (min-width: 992px) and (max-width: 1199.9px) {
+  .theme1 #admin_add form, .theme1 #admin_add h2 {
+    width: 90%;
+    margin: 1rem auto 1rem auto; } }
+@media screen and (min-width: 1200px) {
+  .theme1 #admin_add form, .theme1 #admin_add h2 {
+    width: 80%;
+    margin: 1rem auto 1rem auto; } }
+.theme1 .admin_cmt {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%; }
+  .theme1 .admin_cmt div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px;
+    grid-auto-rows: minmax(0.5rem, auto);
+    row-gap: 0px;
+    max-width: 100%; }
+  .theme1 .admin_cmt form {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center; }
+  @media screen and (min-width: 992px) and (max-width: 1199.9px) {
+    .theme1 .admin_cmt div {
+      width: 90%;
+      margin: auto;
+      grid-template-columns: repeat(2, 20%); }
+    .theme1 .admin_cmt form {
+      width: 90%;
+      margin: auto; } }
+  @media screen and (min-width: 1200px) {
+    .theme1 .admin_cmt div {
+      width: 80%;
+      margin: auto;
+      grid-template-columns: repeat(2, 20%); }
+    .theme1 .admin_cmt form {
+      width: 80%;
+      margin: auto; } }
+
+/*# sourceMappingURL=style.css.map */
