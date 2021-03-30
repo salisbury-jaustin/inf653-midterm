@@ -12,4 +12,20 @@
         <h1>
             Zippy Used Autos
         </h1>
+        <div class="utilities">
+            <?php if ($display_heading == true) : ?> 
+                <?php if (!empty($_SESSION['firstname'])) : ?>
+                    <p>
+                        Welcome, <?php echo $_SESSION['firstname'] ?>!
+                    </p> 
+                    <form action="./index.php" method="post">
+                        <button type="submit" name="action" value="logout">Logout</button>
+                    </form>
+                <?php else: ?>
+                    <form action="./index.php" method="post">
+                        <button type="submit" name="action" value="register">Register</button>
+                    </form>
+                <? endif ?>
+            <?php endif ?>
+        </div>
     </header>

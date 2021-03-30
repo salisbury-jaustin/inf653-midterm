@@ -42,7 +42,7 @@
                     <input type="radio" id="year_radio" name="radio" value="year">
                     <label for="year_radio">Year</label>
                 </div>
-                <input type="submit"></input>
+                <button type="submit">Filter</button>
             </div>
         </form>
     </div>
