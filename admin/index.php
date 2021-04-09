@@ -4,131 +4,56 @@
     require('../model/classes.php');
     require('../model/makes.php');
     require('../model/types.php');
+    require('../model/admin_db.php');
 
-    if (isset($_POST['action'])) {
-        $action = $_POST['action'];
-    } else {
-        $action = 'inventory';
-    }
+    /* SESSION */
+    $lifetime = 60 * 60 * 24 * 365;
+    session_set_cookie_params($lifetime, '/');
+    session_start();
+    
+    /* MODEL DATA */
+    $classes = classes();
+    $makes = makes();
+    $types = types();
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    $confirm_password = filter_input(INPUT_POST, 'confirm_password', FILTER_SANITIZE_STRING);
+    /* END MODEL DATA */
+    
+    /* ACCESS CONTROL */
+    include('./util/valid_admin.php');
 
-    // default admin inventory display
-    if ($action == 'inventory') {
-        try {
-            $vehicles = vehicles_default();
-            $classes = classes();
-            $makes = makes();
-            $types = types();
-            include('../view/admin/inventory.php');
-        } catch (PDOException $e) {
-            $error_message = $e->getMessage();
-            include('../view/admin/error.php');
-        }
+    /* ROUTER START */
+    if ($action == 'inventory' ||
+        $action == 'rmv_vehicle' ||
+        $action == 'sort') {
+            include('./controller/inventory.php');
     }
-    // sorted public inventory  
-    else if ($action == 'sort') {
-        // sorted only by radio value
-        if (empty($_POST['make_id']) && empty($_POST['type_id']) && empty($_POST['class_id'])) {
-            try {
-                $radio_filtered = filter_input(INPUT_POST, 'radio', FILTER_SANITIZE_STRING);
-                if ($radio_filtered == 'price') {
-                    $vehicles = vehicles_default();
-                } else {
-                    $vehicles = vehicles_radio_year();
-                }
-                $classes = classes();
-                $makes = makes();
-                $types = types();
-                include('../view/admin/inventory.php');
-            } catch (PDOException $e) {
-                $error_message = $e->getMessage();
-                include('../view/admin/error.php');
-            }
-        }
-        // sort by make
-        else if (!empty($_POST['make_id']) && empty($_POST['type_id']) && empty($_POST['class_id'])) {
-            try {
-                $radio_filtered = filter_input(INPUT_POST, 'radio', FILTER_SANITIZE_STRING);
-                $id_filtered = filter_input(INPUT_POST, 'make_id', FILTER_SANITIZE_NUMBER_INT); 
-                if ($radio_filtered == 'price') {
-                    $vehicles = vehicles_make_default($id_filtered);
-                } else {
-                    $vehicles = vehicles_make_byYear($id_filtered);
-                }
-                $classes = classes();
-                $makes = makes();
-                $types = types();
-                include('../view/admin/inventory.php');
-            } catch (PDOException $e) {
-                $error_message = $e->getMessage();
-                include('../view/admin/error.php');
-            }
-        }
-        // sort by type
-        else if (empty($_POST['make_id']) && !empty($_POST['type_id']) && empty($_POST['class_id'])) {
-            try {
-                $radio_filtered = filter_input(INPUT_POST, 'radio', FILTER_SANITIZE_STRING);
-                $id_filtered = filter_input(INPUT_POST, 'type_id', FILTER_SANITIZE_NUMBER_INT);
-                if ($radio_filtered == 'price') {
-                    $vehicles = vehicles_type_default($id_filtered);
-                } else {
-                    $vehicles = vehicles_type_byYear($id_filtered);
-                }
-                $classes = classes();
-                $makes = makes();
-                $types = types();
-                include('../view/admin/inventory.php');
-            } catch (PDOException $e) {
-                $error_message = $e->getMessage();
-                include('../view/admin/error.php');
-            }
-        }
-        // sort by class
-        else if (empty($_POST['make_id']) && empty($_POST['type_id']) && !empty($_POST['class_id'])) {
-            try {
-                $radio_filtered = filter_input(INPUT_POST, 'radio', FILTER_SANITIZE_STRING);
-                $id_filtered = filter_input(INPUT_POST, 'class_id', FILTER_SANITIZE_NUMBER_INT);
-                if ($radio_filtered == 'price') {
-                    $vehicles = vehicles_class_default($id_filtered);
-                } else {
-                    $vehicles = vehicles_class_byYear($id_filtered);
-                }
-                $classes = classes();
-                $makes = makes();
-                $types = types();
-                include('../view/admin/inventory.php');
-            } catch (PDOException $e) {
-                $error_message = $e->getMessage();
-                include('../view/admin/error.php');
-            }
-        }
-        // prevents sorting by multiple categories
-        else {
-            try {
-                $error_message = "You may only sort by one category at a time!";
-                $vehicles = vehicles_default();
-                $classes = classes();
-                $makes = makes();
-                $types = types();
-                include('../view/admin/inventory.php');
-            } catch (PDOException $e) {
-                $error_message = $e->getMessage();
-                include('../view/admin/error.php');
-            }
-        }
+    if ($action == 'display_add_form' ||
+        $action == 'add_vehicle') {
+            include('./controller/add_vehicle.php');
     }
-    else if ($action == 'rmv') {
-        try {
-        $vehicle_id = filter_input(INPUT_POST, 'vehicle_id', FILTER_SANITIZE_NUMBER_INT);
-        vehicles_delete($vehicle_id);
-        $vehicles = vehicles_default();
-        $classes = classes();
-        $makes = makes();
-        $types = types();
-        include('../view/admin/inventory.php');
-        } catch (PDOException $e) {
-            $error_message = $e->getMessage();
-            include('../view/admin/error.php');
-        }
+    if ($action == 'display_classes' ||
+        $action == 'add_class' ||
+        $action == 'rmv_class') {
+            include('./controller/class.php');
+    } 
+    if ($action == 'display_makes' ||
+        $action == 'add_make' ||
+        $action == 'rmv_make') {
+            include('./controller/make.php');
     }
+    if ($action == 'display_types' ||
+        $action == 'add_type' ||
+        $action == 'rmv_type') {
+            include('./controller/type.php');
+    }
+    if ($action == 'show_register' ||
+        $action == 'login' ||
+        $action == 'show_login' ||
+        $action == 'register' ||
+        $action == 'logout') {
+            include('./controller/admin.php');
+        } 
 ?>
     

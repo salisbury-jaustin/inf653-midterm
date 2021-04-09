@@ -15,11 +15,11 @@
             <p><?php echo $vehicle['type'];?></p>
             <p><?php echo $vehicle['class'];?></p>
             <p><?php echo $vehicle['price'];?></p>
-            <form action="../admin/index.php" method="post">
-                <input type="hidden" name="action" value="rmv"/>
+            <form action="./index.php" method="post">
+                <input type="hidden" name="action" value="rmv_vehicle"/>
                 <button type="submit" name="vehicle_id" value=<?php echo $vehicle['vehicle_id']?>>Remove</button>
             </form>
         <?php endforeach; ?>
     </div>
 </main>
-<?php include '../view/global/footer.php'?>
+<?php include '../view/admin/footer.php'?>

@@ -13,10 +13,10 @@
             Zippy Used Autos
         </h1>
         <nav>
-            <a href="./index.php">Inventory</a>
-            <a href="./add_vehicle.php">Add Vehicle</a>
-            <a href="./make.php">Makes</a>
-            <a href="./type.php">Types</a>
-            <a href="./class.php">Classes</a>
+            <a href=".?action=inventory">Inventory</a>
+            <a href=".?action=display_add_form">Add Vehicle</a>
+            <a href=".?action=display_makes">Makes</a>
+            <a href=".?action=display_types">Types</a>
+            <a href=".?action=display_classes">Classes</a>
         </nav>
     </header>

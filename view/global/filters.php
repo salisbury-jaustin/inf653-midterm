@@ -1,6 +1,6 @@
 <main>
     <div class="global_filter">
-        <form action="index.php" method="post">
+        <form action="./index.php" method="post">
             <input type="hidden" name="action" value="sort"/>
             <div id="select_inputs">
                 <select id="select_make" name="make_id">

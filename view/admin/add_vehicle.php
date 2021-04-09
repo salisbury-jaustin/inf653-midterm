@@ -2,8 +2,8 @@
     <main>
         <div id="admin_add">
             <h2>Add Vehicle</h2>
-            <form action="./add_vehicle.php" method="post">
-                <input type="hidden" name="action" value="add"/>
+            <form action="." method="post">
+                <input type="hidden" name="action" value="add_vehicle"/>
                 <label for="select_make">Make:</label>
                 <select id="select_make" name="make_id">
                     <option value="">
@@ -51,4 +51,4 @@
             <p><?php if (!empty($error_message)) {echo $error_message;} ?></p>
         </div>
     </main>
-<?php include('../view/global/footer.php'); ?>
+<?php include('../view/admin/footer.php'); ?>

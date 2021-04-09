@@ -1,42 +1,17 @@
 <?php
-    require('../model/db.php');
-    require('../model/vehicles.php');
-    require('../model/classes.php');
-    require('../model/makes.php');
-    require('../model/types.php');
-
     $years = range(1900, strftime("%Y", time()));
 
-    if (isset($_POST['action'])) {
-        $action = $_POST['action'];
-    } else {
-        $action = 'none';
-    }
-
-    if ($action == 'none') {
-        try {
-            $classes = classes();
-            $makes = makes();
-            $types = types();
+    switch($action) {
+        case 'display_add_form': 
             include('../view/admin/add_vehicle.php');
-        } catch (PDOException $e) {
-            $error_message = $e->getMessage();
-            include('../view/admin/error.php');
-        }
-    }
-
-    else if ($action == 'add') {
-        try {
+            break;
+        case 'add_vehicle': 
             $error_message = "";
 
             // checks if any post values are empty
             foreach ($_POST as $key => $value) {
                 if (empty($value)) {
                     $error_message = "Each field must have a value!"; // set error message
-                    $classes = classes();
-                    $makes = makes();
-                    $types = types();
-                    include('../view/admin/add_vehicle.php');
                     break; // break from add action
                 } else {
                     continue;
@@ -58,15 +33,12 @@
                                 'price' => $price);
 
                 vehicles_add($add_array);
-
-                $classes = classes();
-                $makes = makes();
-                $types = types();
-                include('../view/admin/add_vehicle.php');
+            } else {
+                $error_message = $e->getMessage();
+                include('../view/admin/error.php');
+                exit();
             }
-        } catch (PDOException $e) {
-            $error_message = $e->getMessage();
-            include('../view/admin/error.php');
-        }
+            header('Location: .');
+            break;
     }
 ?>
