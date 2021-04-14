@@ -32,7 +32,7 @@
                                 'model' => $model, 
                                 'price' => $price);
 
-                vehicles_add($add_array);
+                VehiclesDB::vehicles_add($add_array);
             } else {
                 $error_message = $e->getMessage();
                 include('../view/admin/error.php');

@@ -6,7 +6,7 @@
         case 'rmv_type':
             try {
                 $type_id = filter_input(INPUT_POST, 'type_id', FILTER_SANITIZE_STRING);
-                type_delete($type_id);
+                TypesDB::type_delete($type_id);
             } catch (PDOException $e) {
                 $error_message = $e->getMessage();
                 include('../view/admin/error.php');
@@ -19,7 +19,7 @@
                 $error_message = '';
                 $type = filter_input(INPUT_POST, 'type', FILTER_SANITIZE_STRING);
                 if (!empty($type)) {
-                    type_add($type);
+                    TypesDB::type_add($type);
                 } else {
                     $error_message = "Must provide a type name!";
                     header('.?action=display_types');

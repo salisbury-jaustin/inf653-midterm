@@ -1,6 +1,7 @@
 <?php 
-    function is_valid_login($username, $password) {
-        global $db;
+class AdminDB {
+    public static function is_valid_login($username, $password) {
+        Database::getDB();
         $query = 'select ID from administrators
                     where username = :username and password = :password';
         $statement = $db->prepare($query);
@@ -11,9 +12,8 @@
         $statement->closeCursor();
         return $valid;
     }
-
-    function userName_exists($username) {
-        global $db;
+    public static function userName_exists($username) {
+        Database::getDB();
         $query = 'select username from administrators
                     where username = :username';
         $statement = $db->prepare($query);
@@ -23,9 +23,8 @@
         $statement->closeCursor();
         return $exists;
     }
-
-    function add_admin($username, $password) {
-        global $db;
+    public static function add_admin($username, $password) {
+        Database::getDB();
         $query = 'insert into administrators
                     (username, password)
                     values
@@ -36,4 +35,5 @@
         $statement->execute();
         $statement->closeCursor();
     }
+}
 ?>

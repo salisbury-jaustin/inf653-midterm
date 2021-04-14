@@ -30,10 +30,10 @@
     // default public inventory display
     if ($action == 'inventory') {
         try {
-            $vehicles = vehicles_default();
-            $classes = classes();
-            $makes = makes();
-            $types = types();
+            $vehicles = VehiclesDB::vehicles_default();
+            $classes = ClassesDB::classes();
+            $makes = MakesDB::makes();
+            $types = TypesDB::types();
             include('./view/public/inventory.php');
         } catch (PDOException $e) {
             $error_message = $e->getMessage();
@@ -76,13 +76,13 @@
             try {
                 $radio_filtered = filter_input(INPUT_POST, 'radio', FILTER_SANITIZE_STRING);
                 if ($radio_filtered == 'price') {
-                    $vehicles = vehicles_default();
+                    $vehicles = VehiclesDB::vehicles_default();
                 } else {
-                    $vehicles = vehicles_radio_year();
+                    $vehicles = VehiclesDB::vehicles_radio_year();
                 }
-                $classes = classes();
-                $makes = makes();
-                $types = types();
+                $classes = ClassesDB::classes();
+                $makes = MakesDB::makes();
+                $types = TypesDB::types();
                 include('./view/public/inventory.php');
             } catch (PDOException $e) {
                 $error_message = $e->getMessage();
@@ -94,13 +94,13 @@
                 $radio_filtered = filter_input(INPUT_POST, 'radio', FILTER_SANITIZE_STRING);
                 $id_filtered = filter_input(INPUT_POST, 'make_id', FILTER_SANITIZE_NUMBER_INT); 
                 if ($radio_filtered == 'price') {
-                    $vehicles = vehicles_make_default($id_filtered);
+                    $vehicles = VehiclesDB::vehicles_make_default($id_filtered);
                 } else {
-                    $vehicles = vehicles_make_byYear($id_filtered);
+                    $vehicles = VehiclesDB::vehicles_make_byYear($id_filtered);
                 }
-                $classes = classes();
-                $makes = makes();
-                $types = types();
+                $classes = ClassesDB::classes();
+                $makes = MakesDB::makes();
+                $types = TypesDB::types();
                 include('./view/public/inventory.php');
             } catch (PDOException $e) {
                 $error_message = $e->getMessage();
@@ -112,13 +112,13 @@
                 $radio_filtered = filter_input(INPUT_POST, 'radio', FILTER_SANITIZE_STRING);
                 $id_filtered = filter_input(INPUT_POST, 'type_id', FILTER_SANITIZE_NUMBER_INT);
                 if ($radio_filtered == 'price') {
-                    $vehicles = vehicles_type_default($id_filtered);
+                    $vehicles = VehiclesDB::vehicles_type_default($id_filtered);
                 } else {
-                    $vehicles = vehicles_type_byYear($id_filtered);
+                    $vehicles = VehiclesDB::vehicles_type_byYear($id_filtered);
                 }
-                $classes = classes();
-                $makes = makes();
-                $types = types();
+                $classes = ClassesDB::classes();
+                $makes = MakesDB::makes();
+                $types = TypesDB::types();
                 include('./view/public/inventory.php');
             } catch (PDOException $e) {
                 $error_message = $e->getMessage();
@@ -130,13 +130,13 @@
                 $radio_filtered = filter_input(INPUT_POST, 'radio', FILTER_SANITIZE_STRING);
                 $id_filtered = filter_input(INPUT_POST, 'class_id', FILTER_SANITIZE_NUMBER_INT);
                 if ($radio_filtered == 'price') {
-                    $vehicles = vehicles_class_default($id_filtered);
+                    $vehicles = VehiclesDB::vehicles_class_default($id_filtered);
                 } else {
-                    $vehicles = vehicles_class_byYear($id_filtered);
+                    $vehicles = VehiclesDB::vehicles_class_byYear($id_filtered);
                 }
-                $classes = classes();
-                $makes = makes();
-                $types = types();
+                $classes = ClassesDB::classes();
+                $makes = MakesDB::makes();
+                $types = TypesDB::types();
                 include('./view/public/inventory.php');
             } catch (PDOException $e) {
                 $error_message = $e->getMessage();
@@ -146,10 +146,10 @@
         else {
             try {
                 $error_message = "You may only sort by one category at a time!";
-                $vehicles = vehicles_default();
-                $classes = classes();
-                $makes = makes();
-                $types = types();
+                $vehicles = VehiclesDB::vehicles_default();
+                $classes = ClassesDB::classes();
+                $makes = MakesDB::makes();
+                $types = TypesDB::types();
                 include('./view/public/inventory.php');
             } catch (PDOException $e) {
                 $error_message = $e->getMessage();

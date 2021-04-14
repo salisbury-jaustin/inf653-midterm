@@ -6,7 +6,7 @@
         case 'rmv_make':
             try {
                 $make_id= filter_input(INPUT_POST, 'make_id', FILTER_SANITIZE_STRING);
-                make_delete($make_id);
+                MakesDB::make_delete($make_id);
             } catch (PDOException $e) {
                 $error_message = $e->getMessage();
                 include('../view/admin/error.php');
@@ -19,7 +19,7 @@
                 $error_message = '';
                 $make = filter_input(INPUT_POST, 'make', FILTER_SANITIZE_STRING);
                 if (!empty($make)) {
-                    make_add($make);
+                    MakesDB::make_add($make);
                 } else {
                     $error_message = "Must provide a make name!";
                 }

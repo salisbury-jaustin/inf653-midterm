@@ -7,18 +7,18 @@
             
         case 'register':
             try {
-                $errors = valid_registration($username, $password, $confirm_password);
+                $errors = ValidRegister::valid_registration($username, $password, $confirm_password);
 
                 if (count($errors) != 0) {
                     $error_message = $errors;
                 } else {
-                    $user_exists = userName_exists($username);
+                    $user_exists = AdminDB::userName_exists($username);
                     if ($user_exists != 0) {
                         $error = "Administrator username already exists.";
                         $error_message = array();
                         array_push($error_message, $error);
                     } else {
-                        add_admin($username, $password);
+                        AdminDB::add_admin($username, $password);
                     }
                 }
             } catch (PDOException $e) {
@@ -39,7 +39,7 @@
 
         case 'login':
             try {
-                $valid = is_valid_login($username, $password);
+                $valid = AdminDB::is_valid_login($username, $password);
                 if ($valid == 1) {
                     $_SESSION['is_valid_admin'] = true;
                 } else {

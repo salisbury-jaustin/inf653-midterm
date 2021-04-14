@@ -3,7 +3,7 @@
         case 'inventory':
             try {
                 if (!isset($vehicles)) {
-                    $vehicles = vehicles_default();
+                    $vehicles = VehiclesDB::vehicles_default();
                 }
                 include('../view/admin/inventory.php');
             } catch (PDOException $e) {
@@ -17,9 +17,9 @@
                 try {
                     $radio_filtered = filter_input(INPUT_POST, 'radio', FILTER_SANITIZE_STRING);
                     if ($radio_filtered == 'price') {
-                        $vehicles = vehicles_default();
+                        $vehicles = VehiclesDB::vehicles_default();
                     } else {
-                        $vehicles = vehicles_radio_year();
+                        $vehicles = VehiclesDB::vehicles_radio_year();
                     }
                 } catch (PDOException $e) {
                     $error_message = $e->getMessage();
@@ -33,9 +33,9 @@
                     $radio_filtered = filter_input(INPUT_POST, 'radio', FILTER_SANITIZE_STRING);
                     $id_filtered = filter_input(INPUT_POST, 'make_id', FILTER_SANITIZE_NUMBER_INT); 
                     if ($radio_filtered == 'price') {
-                        $vehicles = vehicles_make_default($id_filtered);
+                        $vehicles = VehiclesDB::vehicles_make_default($id_filtered);
                     } else {
-                        $vehicles = vehicles_make_byYear($id_filtered);
+                        $vehicles = VehiclesDB::vehicles_make_byYear($id_filtered);
                     }
                 } catch (PDOException $e) {
                     $error_message = $e->getMessage();
@@ -49,9 +49,9 @@
                     $radio_filtered = filter_input(INPUT_POST, 'radio', FILTER_SANITIZE_STRING);
                     $id_filtered = filter_input(INPUT_POST, 'type_id', FILTER_SANITIZE_NUMBER_INT);
                     if ($radio_filtered == 'price') {
-                        $vehicles = vehicles_type_default($id_filtered);
+                        $vehicles = VehiclesDB::vehicles_type_default($id_filtered);
                     } else {
-                        $vehicles = vehicles_type_byYear($id_filtered);
+                        $vehicles = VehiclesDB::vehicles_type_byYear($id_filtered);
                     }
                 } catch (PDOException $e) {
                     $error_message = $e->getMessage();
@@ -65,9 +65,9 @@
                     $radio_filtered = filter_input(INPUT_POST, 'radio', FILTER_SANITIZE_STRING);
                     $id_filtered = filter_input(INPUT_POST, 'class_id', FILTER_SANITIZE_NUMBER_INT);
                     if ($radio_filtered == 'price') {
-                        $vehicles = vehicles_class_default($id_filtered);
+                        $vehicles = VehiclesDB::vehicles_class_default($id_filtered);
                     } else {
-                        $vehicles = vehicles_class_byYear($id_filtered);
+                        $vehicles = VehiclesDB::vehicles_class_byYear($id_filtered);
                     }
                 } catch (PDOException $e) {
                     $error_message = $e->getMessage();
@@ -90,7 +90,7 @@
         case 'rmv_vehicle':
             try {
                 $vehicle_id = filter_input(INPUT_POST, 'vehicle_id', FILTER_SANITIZE_NUMBER_INT);
-                vehicles_delete($vehicle_id);
+                VehiclesDB::vehicles_delete($vehicle_id);
                 } catch (PDOException $e) {
                     $error_message = $e->getMessage();
                     include('../view/admin/error.php');

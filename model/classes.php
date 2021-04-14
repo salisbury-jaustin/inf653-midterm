@@ -1,9 +1,7 @@
 <?php
-    /* DB FUNCTIONS FOR CLASS TABLE */ 
-
-    /**** READ FUNCTIONS ****/
-    function classes() {
-        global $db;
+class ClassesDB {
+    public static function classes() {
+        Database::getDB();
         $query = 'select * from classes
                     order by class';
         $statement = $db->prepare($query);
@@ -12,10 +10,8 @@
         $statement->closeCursor();
         return $classes;
     }
-
-    /**** DELETE FUNCTIONS ****/
-    function class_delete($class_id) {
-        global $db;
+    public static function class_delete($class_id) {
+        Database::getDB();
         $query = 'delete from classes
                     where class_id = :class_id';
         $statement = $db->prepare($query);
@@ -23,10 +19,8 @@
         $statement->execute();
         $statement->closeCursor();
     }
-
-    /**** UPDATE FUNCTIONS ****/
-    function class_add($class) {
-        global $db;
+    public static function class_add($class) {
+        Database::getDB();
         $query = 'insert into classes
                     (class)
                     values
@@ -36,16 +30,5 @@
         $statement->execute();
         $statement->closeCursor();
     }
-    function class_update($class_id, $class) {
-        global $db;
-        $query = 'update classes
-                    set
-                    class = :class
-                    where class_id = :class_id';
-        $statement = $db->prepare($query);
-        $statement->bindValues(':class', $class);
-        $statement->bindValues(':class_id', $class_id);
-        $statement->execute();
-        $statement->closeCursor();
-    }
+}
 ?>

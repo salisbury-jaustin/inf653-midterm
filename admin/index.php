@@ -12,9 +12,9 @@
     session_start();
     
     /* MODEL DATA */
-    $classes = classes();
-    $makes = makes();
-    $types = types();
+    $classes = ClassesDB::classes();
+    $makes = MakesDB::makes();
+    $types = TypesDB::types();
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
     $confirm_password = filter_input(INPUT_POST, 'confirm_password', FILTER_SANITIZE_STRING);
