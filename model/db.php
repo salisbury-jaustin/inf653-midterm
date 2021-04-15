@@ -1,18 +1,18 @@
 <?php
 class Database {
-    /*
     private static $dsn = 'mysql:host=pxukqohrckdfo4ty.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=iasqxmesm0vc2u5a';
     private static $username = 'f2qt8i85psvmhrmg';
     private static $password = 'lqzwcg9s6c7r2zbk';
     private static $option = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
     private static $db;
-    */
 
+    /*
     private static $dsn = 'mysql:host=localhost;dbname=zippyusedautos';
-    private static $user = 'root';
-    private static $password = '';
+    private static $user = 'developer';
+    private static $password = 'Homosapien1990!';
     private static $option = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION); // sets error mode for PDO
     private static $db;
+    */
 
     private function _construct() {}
 

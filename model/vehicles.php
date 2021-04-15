@@ -1,7 +1,7 @@
 <?php 
 class VehiclesDB {
     public static function vehicles_default() {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select v.vehicle_id, v.year, m.make, v.model, t.type, c.class, v.price 
                     from vehicles v 
                     inner join makes m on m.make_id = v.make_id
@@ -15,7 +15,7 @@ class VehiclesDB {
         return $vehicles;
     }
     public static function vehicles_radio_year() {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select v.vehicle_id, v.year, m.make, v.model, t.type, c.class, v.price 
                     from vehicles v 
                     inner join makes m on m.make_id = v.make_id
@@ -29,7 +29,7 @@ class VehiclesDB {
         return $vehicles;
     }
     public static function vehicles_type_default($type_id) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select v.vehicle_id, v.year, m.make, v.model, t.type, c.class, v.price 
                     from vehicles v 
                     inner join makes m on m.make_id = v.make_id
@@ -45,7 +45,7 @@ class VehiclesDB {
         return $vehicles;
     }
     public static function vehicles_type_byYear($type_id) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select v.vehicle_id, v.year, m.make, v.model, t.type, c.class, v.price 
                     from vehicles v 
                     inner join makes m on m.make_id = v.make_id
@@ -61,7 +61,7 @@ class VehiclesDB {
         return $vehicles;
     }
     public static function vehicles_class_default($class_id) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select v.vehicle_id, v.year, m.make, v.model, t.type, c.class, v.price 
                     from vehicles v 
                     inner join makes m on m.make_id = v.make_id
@@ -77,7 +77,7 @@ class VehiclesDB {
         return $vehicles;
     }
     public static function vehicles_class_byYear($class_id) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select v.vehicle_id, v.year, m.make, v.model, t.type, c.class, v.price 
                     from vehicles v 
                     inner join makes m on m.make_id = v.make_id
@@ -93,7 +93,7 @@ class VehiclesDB {
         return $vehicles;
     }
     public static function vehicles_make_default($make_id) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select v.vehicle_id, v.year, m.make, v.model, t.type, c.class, v.price 
                     from vehicles v 
                     inner join makes m on m.make_id = v.make_id
@@ -109,7 +109,7 @@ class VehiclesDB {
         return $vehicles;
     }
     public static function vehicles_make_byYear($make_id) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select v.vehicle_id, v.year, m.make, v.model, t.type, c.class, v.price 
                     from vehicles v 
                     inner join makes m on m.make_id = v.make_id
@@ -125,7 +125,7 @@ class VehiclesDB {
         return $vehicles;
     }
     public static function vehicles_delete($vehicle_id) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'delete from vehicles
                     where vehicle_id = :vehicle_id';
         $statement = $db->prepare($query);
@@ -134,7 +134,7 @@ class VehiclesDB {
         $statement->closeCursor();
     }
     public static function vehicles_add($add_array) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'insert into vehicles
                     (year, model, price, type_id, class_id, make_id)
                     values 

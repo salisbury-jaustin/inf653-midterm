@@ -1,7 +1,7 @@
 <?php
 class ClassesDB {
     public static function classes() {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select * from classes
                     order by class';
         $statement = $db->prepare($query);
@@ -11,7 +11,7 @@ class ClassesDB {
         return $classes;
     }
     public static function class_delete($class_id) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'delete from classes
                     where class_id = :class_id';
         $statement = $db->prepare($query);
@@ -20,7 +20,7 @@ class ClassesDB {
         $statement->closeCursor();
     }
     public static function class_add($class) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'insert into classes
                     (class)
                     values

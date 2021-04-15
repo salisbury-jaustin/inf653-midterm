@@ -1,7 +1,7 @@
 <?php 
 class AdminDB {
     public static function is_valid_login($username, $password) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select ID from administrators
                     where username = :username and password = :password';
         $statement = $db->prepare($query);
@@ -13,7 +13,7 @@ class AdminDB {
         return $valid;
     }
     public static function userName_exists($username) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select username from administrators
                     where username = :username';
         $statement = $db->prepare($query);
@@ -24,7 +24,7 @@ class AdminDB {
         return $exists;
     }
     public static function add_admin($username, $password) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'insert into administrators
                     (username, password)
                     values

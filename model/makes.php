@@ -1,7 +1,7 @@
 <?php
 class MakesDB{
     public static function makes() {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select * from makes
                     order by make';
         $statement = $db->prepare($query);
@@ -11,7 +11,7 @@ class MakesDB{
         return $makes;
     }
     public static function make_delete($make_id) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'delete from makes
                     where make_id = :make_id';
         $statement = $db->prepare($query);
@@ -20,7 +20,7 @@ class MakesDB{
         $statement->closeCursor();
     }
     public static function make_add($make) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'insert into makes
                     (make)
                     values

@@ -1,7 +1,7 @@
 <?php
 class TypesDB {
     public static function types() {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'select * from types
                     order by type';
         $statement = $db->prepare($query);
@@ -11,7 +11,7 @@ class TypesDB {
         return $types;
     }
     public static function type_delete($type_id) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'delete from types
                     where type_id = :type_id';
         $statement = $db->prepare($query);
@@ -20,7 +20,7 @@ class TypesDB {
         $statement->closeCursor();
     }
     public static function type_add($type) {
-        Database::getDB();
+        $db = Database::getDB();
         $query = 'insert into types
                     (type)
                     values
